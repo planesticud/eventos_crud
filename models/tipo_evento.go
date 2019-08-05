@@ -5,50 +5,56 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type ParticipanteSesion struct {
-	Id                    int                    `orm:"column(id);pk;auto"`
-	Sesion                *Sesion                `orm:"column(sesion);rel(fk)"`
-	RolParticipanteSesion *RolParticipanteSesion `orm:"column(rol_participante_sesion);rel(fk)"`
-	Ente                  int                    `orm:"column(ente)"`
+type TipoEvento struct {
+	Id                int              `orm:"column(id);pk;auto"`
+	Nombre            string           `orm:"column(nombre)"`
+	Descripcion       string           `orm:"column(descripcion);null"`
+	CodigoAbreviacion string           `orm:"column(codigo_abreviacion);null"`
+	Activo            bool             `orm:"column(activo)"`
+	DependenciaId     int              `orm:"column(dependencia_id)"`
+	FechaCreacion     time.Time        `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion time.Time        `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+	TipoRecurrenciaId *TipoRecurrencia `orm:"column(tipo_recurrencia_id);rel(fk)"`
 }
 
-func (t *ParticipanteSesion) TableName() string {
-	return "participante_sesion"
+func (t *TipoEvento) TableName() string {
+	return "tipo_evento"
 }
 
 func init() {
-	orm.RegisterModel(new(ParticipanteSesion))
+	orm.RegisterModel(new(TipoEvento))
 }
 
-// AddParticipanteSesion insert a new ParticipanteSesion into database and returns
+// AddTipoEvento insert a new TipoEvento into database and returns
 // last inserted Id on success.
-func AddParticipanteSesion(m *ParticipanteSesion) (id int64, err error) {
+func AddTipoEvento(m *TipoEvento) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetParticipanteSesionById retrieves ParticipanteSesion by Id. Returns error if
+// GetTipoEventoById retrieves TipoEvento by Id. Returns error if
 // Id doesn't exist
-func GetParticipanteSesionById(id int) (v *ParticipanteSesion, err error) {
+func GetTipoEventoById(id int) (v *TipoEvento, err error) {
 	o := orm.NewOrm()
-	v = &ParticipanteSesion{Id: id}
+	v = &TipoEvento{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllParticipanteSesion retrieves all ParticipanteSesion matches certain condition. Returns empty list if
+// GetAllTipoEvento retrieves all TipoEvento matches certain condition. Returns empty list if
 // no records exist
-func GetAllParticipanteSesion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoEvento(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ParticipanteSesion)).RelatedSel()
+	qs := o.QueryTable(new(TipoEvento)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -98,7 +104,7 @@ func GetAllParticipanteSesion(query map[string]string, fields []string, sortby [
 		}
 	}
 
-	var l []ParticipanteSesion
+	var l []TipoEvento
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -121,11 +127,11 @@ func GetAllParticipanteSesion(query map[string]string, fields []string, sortby [
 	return nil, err
 }
 
-// UpdateParticipanteSesion updates ParticipanteSesion by Id and returns error if
+// UpdateTipoEvento updates TipoEvento by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateParticipanteSesionById(m *ParticipanteSesion) (err error) {
+func UpdateTipoEventoById(m *TipoEvento) (err error) {
 	o := orm.NewOrm()
-	v := ParticipanteSesion{Id: m.Id}
+	v := TipoEvento{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -136,15 +142,15 @@ func UpdateParticipanteSesionById(m *ParticipanteSesion) (err error) {
 	return
 }
 
-// DeleteParticipanteSesion deletes ParticipanteSesion by Id and returns error if
+// DeleteTipoEvento deletes TipoEvento by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteParticipanteSesion(id int) (err error) {
+func DeleteTipoEvento(id int) (err error) {
 	o := orm.NewOrm()
-	v := ParticipanteSesion{Id: id}
+	v := TipoEvento{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ParticipanteSesion{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoEvento{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

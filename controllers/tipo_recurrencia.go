@@ -3,20 +3,22 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/planesticud/sesiones_crud/models"
 	"strconv"
 	"strings"
 
+	"github.com/planesticud/eventos_crud/models"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
-// TipoSesionController operations for TipoSesion
-type TipoSesionController struct {
+// TipoRecurrenciaController operations for TipoRecurrencia
+type TipoRecurrenciaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *TipoSesionController) URLMapping() {
+func (c *TipoRecurrenciaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,41 +28,47 @@ func (c *TipoSesionController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create TipoSesion
-// @Param	body		body 	models.TipoSesion	true		"body for TipoSesion content"
-// @Success 201 {int} models.TipoSesion
+// @Description create TipoRecurrencia
+// @Param	body		body 	models.TipoRecurrencia	true		"body for TipoRecurrencia content"
+// @Success 201 {int} models.TipoRecurrencia
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *TipoSesionController) Post() {
-	var v models.TipoSesion
+func (c *TipoRecurrenciaController) Post() {
+	var v models.TipoRecurrencia
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddTipoSesion(&v); err == nil {
+		if _, err := models.AddTipoRecurrencia(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			beego.Error(err)
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
 			c.Abort("400")
 		}
 	} else {
-			beego.Error(err)
-			c.Abort("400")
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
 
 // GetOne ...
 // @Title Get One
-// @Description get TipoSesion by id
+// @Description get TipoRecurrencia by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.TipoSesion
+// @Success 200 {object} models.TipoRecurrencia
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *TipoSesionController) GetOne() {
+func (c *TipoRecurrenciaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetTipoSesionById(id)
+	v, err := models.GetTipoRecurrenciaById(id)
 	if err != nil {
-		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
 		c.Abort("404")
 	} else {
 		c.Data["json"] = v
@@ -70,17 +78,17 @@ func (c *TipoSesionController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get TipoSesion
+// @Description get TipoRecurrencia
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.TipoSesion
+// @Success 200 {object} models.TipoRecurrencia
 // @Failure 404 not found resource
 // @router / [get]
-func (c *TipoSesionController) GetAll() {
+func (c *TipoRecurrenciaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -122,9 +130,11 @@ func (c *TipoSesionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllTipoSesion(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoRecurrencia(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
 		c.Abort("404")
 	} else {
 		if l == nil {
@@ -137,44 +147,50 @@ func (c *TipoSesionController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the TipoSesion
+// @Description update the TipoRecurrencia
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.TipoSesion	true		"body for TipoSesion content"
-// @Success 200 {object} models.TipoSesion
+// @Param	body		body 	models.TipoRecurrencia	true		"body for TipoRecurrencia content"
+// @Success 200 {object} models.TipoRecurrencia
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *TipoSesionController) Put() {
+func (c *TipoRecurrenciaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.TipoSesion{Id: id}
+	v := models.TipoRecurrencia{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateTipoSesionById(&v); err == nil {
+		if err := models.UpdateTipoRecurrenciaById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
-			beego.Error(err)
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
 			c.Abort("400")
 		}
 	} else {
-			beego.Error(err)
-			c.Abort("400")
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
 
 // Delete ...
 // @Title Delete
-// @Description delete the TipoSesion
+// @Description delete the TipoRecurrencia
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *TipoSesionController) Delete() {
+func (c *TipoRecurrenciaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteTipoSesion(id); err == nil {
+	if err := models.DeleteTipoRecurrencia(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
 		c.Abort("404")
 	}
 	c.ServeJSON()

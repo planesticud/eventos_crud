@@ -3,20 +3,22 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/planesticud/sesiones_crud/models"
 	"strconv"
 	"strings"
 
+	"github.com/planesticud/eventos_crud/models"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
-// SesionController operations for Sesion
-type SesionController struct {
+// TipoPublicoController operations for TipoPublico
+type TipoPublicoController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *SesionController) URLMapping() {
+func (c *TipoPublicoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,41 +28,47 @@ func (c *SesionController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create Sesion
-// @Param	body		body 	models.Sesion	true		"body for Sesion content"
-// @Success 201 {int} models.Sesion
+// @Description create TipoPublico
+// @Param	body		body 	models.TipoPublico	true		"body for TipoPublico content"
+// @Success 201 {int} models.TipoPublico
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *SesionController) Post() {
-	var v models.Sesion
+func (c *TipoPublicoController) Post() {
+	var v models.TipoPublico
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddSesion(&v); err == nil {
+		if _, err := models.AddTipoPublico(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			beego.Error(err)
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
 			c.Abort("400")
 		}
 	} else {
-			beego.Error(err)
-			c.Abort("400")
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
 
 // GetOne ...
 // @Title Get One
-// @Description get Sesion by id
+// @Description get TipoPublico by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.Sesion
+// @Success 200 {object} models.TipoPublico
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *SesionController) GetOne() {
+func (c *TipoPublicoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetSesionById(id)
+	v, err := models.GetTipoPublicoById(id)
 	if err != nil {
-		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
 		c.Abort("404")
 	} else {
 		c.Data["json"] = v
@@ -70,17 +78,17 @@ func (c *SesionController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get Sesion
+// @Description get TipoPublico
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.Sesion
+// @Success 200 {object} models.TipoPublico
 // @Failure 404 not found resource
 // @router / [get]
-func (c *SesionController) GetAll() {
+func (c *TipoPublicoController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -122,9 +130,11 @@ func (c *SesionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllSesion(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoPublico(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
 		c.Abort("404")
 	} else {
 		if l == nil {
@@ -137,44 +147,50 @@ func (c *SesionController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the Sesion
+// @Description update the TipoPublico
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.Sesion	true		"body for Sesion content"
-// @Success 200 {object} models.Sesion
+// @Param	body		body 	models.TipoPublico	true		"body for TipoPublico content"
+// @Success 200 {object} models.TipoPublico
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *SesionController) Put() {
+func (c *TipoPublicoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Sesion{Id: id}
+	v := models.TipoPublico{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateSesionById(&v); err == nil {
+		if err := models.UpdateTipoPublicoById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
-			beego.Error(err)
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
 			c.Abort("400")
 		}
 	} else {
-			beego.Error(err)
-			c.Abort("400")
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
 
 // Delete ...
 // @Title Delete
-// @Description delete the Sesion
+// @Description delete the TipoPublico
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *SesionController) Delete() {
+func (c *TipoPublicoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteSesion(id); err == nil {
+	if err := models.DeleteTipoPublico(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		beego.Error(err)
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
 		c.Abort("404")
 	}
 	c.ServeJSON()

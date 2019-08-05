@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "beego Test API",
+        "title": "beego Eventos Crud",
         "description": "beego has a very cool tools to autogenerate documents for your API",
         "version": "1.0.0",
         "termsOfService": "http://beego.me/",
@@ -15,13 +15,13 @@
     },
     "basePath": "/v1",
     "paths": {
-        "/participante_sesion/": {
+        "/calendario_evento/": {
             "get": {
                 "tags": [
-                    "participante_sesion"
+                    "calendario_evento"
                 ],
-                "description": "get ParticipanteSesion",
-                "operationId": "ParticipanteSesionController.Get All",
+                "description": "get CalendarioEvento",
+                "operationId": "CalendarioEventoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -64,7 +64,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.ParticipanteSesion"
+                            "$ref": "#/definitions/models.CalendarioEvento"
                         }
                     },
                     "404": {
@@ -74,24 +74,24 @@
             },
             "post": {
                 "tags": [
-                    "participante_sesion"
+                    "calendario_evento"
                 ],
-                "description": "create ParticipanteSesion",
-                "operationId": "ParticipanteSesionController.Post",
+                "description": "create CalendarioEvento",
+                "operationId": "CalendarioEventoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for ParticipanteSesion content",
+                        "description": "body for CalendarioEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.ParticipanteSesion"
+                            "$ref": "#/definitions/models.CalendarioEvento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.ParticipanteSesion"
+                        "description": "{int} models.CalendarioEvento"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -99,13 +99,13 @@
                 }
             }
         },
-        "/participante_sesion/{id}": {
+        "/calendario_evento/{id}": {
             "get": {
                 "tags": [
-                    "participante_sesion"
+                    "calendario_evento"
                 ],
-                "description": "get ParticipanteSesion by id",
-                "operationId": "ParticipanteSesionController.Get One",
+                "description": "get CalendarioEvento by id",
+                "operationId": "CalendarioEventoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -119,7 +119,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.ParticipanteSesion"
+                            "$ref": "#/definitions/models.CalendarioEvento"
                         }
                     },
                     "404": {
@@ -129,10 +129,10 @@
             },
             "put": {
                 "tags": [
-                    "participante_sesion"
+                    "calendario_evento"
                 ],
-                "description": "update the ParticipanteSesion",
-                "operationId": "ParticipanteSesionController.Put",
+                "description": "update the CalendarioEvento",
+                "operationId": "CalendarioEventoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -144,10 +144,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for ParticipanteSesion content",
+                        "description": "body for CalendarioEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.ParticipanteSesion"
+                            "$ref": "#/definitions/models.CalendarioEvento"
                         }
                     }
                 ],
@@ -155,7 +155,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.ParticipanteSesion"
+                            "$ref": "#/definitions/models.CalendarioEvento"
                         }
                     },
                     "400": {
@@ -165,10 +165,10 @@
             },
             "delete": {
                 "tags": [
-                    "participante_sesion"
+                    "calendario_evento"
                 ],
-                "description": "delete the ParticipanteSesion",
-                "operationId": "ParticipanteSesionController.Delete",
+                "description": "delete the CalendarioEvento",
+                "operationId": "CalendarioEventoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -188,13 +188,13 @@
                 }
             }
         },
-        "/relacion_sesiones/": {
+        "/encargado_evento/": {
             "get": {
                 "tags": [
-                    "relacion_sesiones"
+                    "encargado_evento"
                 ],
-                "description": "get RelacionSesiones",
-                "operationId": "RelacionSesionesController.Get All",
+                "description": "get EncargadoEvento",
+                "operationId": "EncargadoEventoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -237,7 +237,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.RelacionSesiones"
+                            "$ref": "#/definitions/models.EncargadoEvento"
                         }
                     },
                     "404": {
@@ -247,24 +247,24 @@
             },
             "post": {
                 "tags": [
-                    "relacion_sesiones"
+                    "encargado_evento"
                 ],
-                "description": "create RelacionSesiones",
-                "operationId": "RelacionSesionesController.Post",
+                "description": "create EncargadoEvento",
+                "operationId": "EncargadoEventoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for RelacionSesiones content",
+                        "description": "body for EncargadoEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.RelacionSesiones"
+                            "$ref": "#/definitions/models.EncargadoEvento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.RelacionSesiones"
+                        "description": "{int} models.EncargadoEvento"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -272,13 +272,13 @@
                 }
             }
         },
-        "/relacion_sesiones/{id}": {
+        "/encargado_evento/{id}": {
             "get": {
                 "tags": [
-                    "relacion_sesiones"
+                    "encargado_evento"
                 ],
-                "description": "get RelacionSesiones by id",
-                "operationId": "RelacionSesionesController.Get One",
+                "description": "get EncargadoEvento by id",
+                "operationId": "EncargadoEventoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -292,7 +292,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.RelacionSesiones"
+                            "$ref": "#/definitions/models.EncargadoEvento"
                         }
                     },
                     "404": {
@@ -302,10 +302,10 @@
             },
             "put": {
                 "tags": [
-                    "relacion_sesiones"
+                    "encargado_evento"
                 ],
-                "description": "update the RelacionSesiones",
-                "operationId": "RelacionSesionesController.Put",
+                "description": "update the EncargadoEvento",
+                "operationId": "EncargadoEventoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -317,10 +317,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for RelacionSesiones content",
+                        "description": "body for EncargadoEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.RelacionSesiones"
+                            "$ref": "#/definitions/models.EncargadoEvento"
                         }
                     }
                 ],
@@ -328,7 +328,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.RelacionSesiones"
+                            "$ref": "#/definitions/models.EncargadoEvento"
                         }
                     },
                     "400": {
@@ -338,10 +338,10 @@
             },
             "delete": {
                 "tags": [
-                    "relacion_sesiones"
+                    "encargado_evento"
                 ],
-                "description": "delete the RelacionSesiones",
-                "operationId": "RelacionSesionesController.Delete",
+                "description": "delete the EncargadoEvento",
+                "operationId": "EncargadoEventoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -361,13 +361,13 @@
                 }
             }
         },
-        "/rol_participante_sesion/": {
+        "/rol_encargado_evento/": {
             "get": {
                 "tags": [
-                    "rol_participante_sesion"
+                    "rol_encargado_evento"
                 ],
-                "description": "get RolParticipanteSesion",
-                "operationId": "RolParticipanteSesionController.Get All",
+                "description": "get RolEncargadoEvento",
+                "operationId": "RolEncargadoEventoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -410,7 +410,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.RolParticipanteSesion"
+                            "$ref": "#/definitions/models.RolEncargadoEvento"
                         }
                     },
                     "404": {
@@ -420,24 +420,24 @@
             },
             "post": {
                 "tags": [
-                    "rol_participante_sesion"
+                    "rol_encargado_evento"
                 ],
-                "description": "create RolParticipanteSesion",
-                "operationId": "RolParticipanteSesionController.Post",
+                "description": "create RolEncargadoEvento",
+                "operationId": "RolEncargadoEventoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for RolParticipanteSesion content",
+                        "description": "body for RolEncargadoEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.RolParticipanteSesion"
+                            "$ref": "#/definitions/models.RolEncargadoEvento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.RolParticipanteSesion"
+                        "description": "{int} models.RolEncargadoEvento"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -445,13 +445,13 @@
                 }
             }
         },
-        "/rol_participante_sesion/{id}": {
+        "/rol_encargado_evento/{id}": {
             "get": {
                 "tags": [
-                    "rol_participante_sesion"
+                    "rol_encargado_evento"
                 ],
-                "description": "get RolParticipanteSesion by id",
-                "operationId": "RolParticipanteSesionController.Get One",
+                "description": "get RolEncargadoEvento by id",
+                "operationId": "RolEncargadoEventoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -465,7 +465,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.RolParticipanteSesion"
+                            "$ref": "#/definitions/models.RolEncargadoEvento"
                         }
                     },
                     "404": {
@@ -475,10 +475,10 @@
             },
             "put": {
                 "tags": [
-                    "rol_participante_sesion"
+                    "rol_encargado_evento"
                 ],
-                "description": "update the RolParticipanteSesion",
-                "operationId": "RolParticipanteSesionController.Put",
+                "description": "update the RolEncargadoEvento",
+                "operationId": "RolEncargadoEventoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -490,10 +490,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for RolParticipanteSesion content",
+                        "description": "body for RolEncargadoEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.RolParticipanteSesion"
+                            "$ref": "#/definitions/models.RolEncargadoEvento"
                         }
                     }
                 ],
@@ -501,7 +501,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.RolParticipanteSesion"
+                            "$ref": "#/definitions/models.RolEncargadoEvento"
                         }
                     },
                     "400": {
@@ -511,10 +511,10 @@
             },
             "delete": {
                 "tags": [
-                    "rol_participante_sesion"
+                    "rol_encargado_evento"
                 ],
-                "description": "delete the RolParticipanteSesion",
-                "operationId": "RolParticipanteSesionController.Delete",
+                "description": "delete the RolEncargadoEvento",
+                "operationId": "RolEncargadoEventoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -534,13 +534,13 @@
                 }
             }
         },
-        "/sesion/": {
+        "/tipo_evento/": {
             "get": {
                 "tags": [
-                    "sesion"
+                    "tipo_evento"
                 ],
-                "description": "get Sesion",
-                "operationId": "SesionController.Get All",
+                "description": "get TipoEvento",
+                "operationId": "TipoEventoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -583,7 +583,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Sesion"
+                            "$ref": "#/definitions/models.TipoEvento"
                         }
                     },
                     "404": {
@@ -593,24 +593,24 @@
             },
             "post": {
                 "tags": [
-                    "sesion"
+                    "tipo_evento"
                 ],
-                "description": "create Sesion",
-                "operationId": "SesionController.Post",
+                "description": "create TipoEvento",
+                "operationId": "TipoEventoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for Sesion content",
+                        "description": "body for TipoEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Sesion"
+                            "$ref": "#/definitions/models.TipoEvento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.Sesion"
+                        "description": "{int} models.TipoEvento"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -618,13 +618,13 @@
                 }
             }
         },
-        "/sesion/{id}": {
+        "/tipo_evento/{id}": {
             "get": {
                 "tags": [
-                    "sesion"
+                    "tipo_evento"
                 ],
-                "description": "get Sesion by id",
-                "operationId": "SesionController.Get One",
+                "description": "get TipoEvento by id",
+                "operationId": "TipoEventoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -638,7 +638,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Sesion"
+                            "$ref": "#/definitions/models.TipoEvento"
                         }
                     },
                     "404": {
@@ -648,10 +648,10 @@
             },
             "put": {
                 "tags": [
-                    "sesion"
+                    "tipo_evento"
                 ],
-                "description": "update the Sesion",
-                "operationId": "SesionController.Put",
+                "description": "update the TipoEvento",
+                "operationId": "TipoEventoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -663,10 +663,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for Sesion content",
+                        "description": "body for TipoEvento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Sesion"
+                            "$ref": "#/definitions/models.TipoEvento"
                         }
                     }
                 ],
@@ -674,7 +674,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Sesion"
+                            "$ref": "#/definitions/models.TipoEvento"
                         }
                     },
                     "400": {
@@ -684,10 +684,10 @@
             },
             "delete": {
                 "tags": [
-                    "sesion"
+                    "tipo_evento"
                 ],
-                "description": "delete the Sesion",
-                "operationId": "SesionController.Delete",
+                "description": "delete the TipoEvento",
+                "operationId": "TipoEventoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -707,13 +707,13 @@
                 }
             }
         },
-        "/tipo_sesion/": {
+        "/tipo_publico/": {
             "get": {
                 "tags": [
-                    "tipo_sesion"
+                    "tipo_publico"
                 ],
-                "description": "get TipoSesion",
-                "operationId": "TipoSesionController.Get All",
+                "description": "get TipoPublico",
+                "operationId": "TipoPublicoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -756,7 +756,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.TipoSesion"
+                            "$ref": "#/definitions/models.TipoPublico"
                         }
                     },
                     "404": {
@@ -766,24 +766,24 @@
             },
             "post": {
                 "tags": [
-                    "tipo_sesion"
+                    "tipo_publico"
                 ],
-                "description": "create TipoSesion",
-                "operationId": "TipoSesionController.Post",
+                "description": "create TipoPublico",
+                "operationId": "TipoPublicoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for TipoSesion content",
+                        "description": "body for TipoPublico content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TipoSesion"
+                            "$ref": "#/definitions/models.TipoPublico"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.TipoSesion"
+                        "description": "{int} models.TipoPublico"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -791,13 +791,13 @@
                 }
             }
         },
-        "/tipo_sesion/{id}": {
+        "/tipo_publico/{id}": {
             "get": {
                 "tags": [
-                    "tipo_sesion"
+                    "tipo_publico"
                 ],
-                "description": "get TipoSesion by id",
-                "operationId": "TipoSesionController.Get One",
+                "description": "get TipoPublico by id",
+                "operationId": "TipoPublicoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -811,7 +811,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.TipoSesion"
+                            "$ref": "#/definitions/models.TipoPublico"
                         }
                     },
                     "404": {
@@ -821,10 +821,10 @@
             },
             "put": {
                 "tags": [
-                    "tipo_sesion"
+                    "tipo_publico"
                 ],
-                "description": "update the TipoSesion",
-                "operationId": "TipoSesionController.Put",
+                "description": "update the TipoPublico",
+                "operationId": "TipoPublicoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -836,10 +836,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for TipoSesion content",
+                        "description": "body for TipoPublico content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TipoSesion"
+                            "$ref": "#/definitions/models.TipoPublico"
                         }
                     }
                 ],
@@ -847,7 +847,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.TipoSesion"
+                            "$ref": "#/definitions/models.TipoPublico"
                         }
                     },
                     "400": {
@@ -857,10 +857,10 @@
             },
             "delete": {
                 "tags": [
-                    "tipo_sesion"
+                    "tipo_publico"
                 ],
-                "description": "delete the TipoSesion",
-                "operationId": "TipoSesionController.Delete",
+                "description": "delete the TipoPublico",
+                "operationId": "TipoPublicoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -873,6 +873,298 @@
                 "responses": {
                     "200": {
                         "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tipo_recurrencia/": {
+            "get": {
+                "tags": [
+                    "tipo_recurrencia"
+                ],
+                "description": "get TipoRecurrencia",
+                "operationId": "TipoRecurrenciaController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRecurrencia"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_recurrencia"
+                ],
+                "description": "create TipoRecurrencia",
+                "operationId": "TipoRecurrenciaController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoRecurrencia content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRecurrencia"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoRecurrencia"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tipo_recurrencia/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_recurrencia"
+                ],
+                "description": "get TipoRecurrencia by id",
+                "operationId": "TipoRecurrenciaController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRecurrencia"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_recurrencia"
+                ],
+                "description": "update the TipoRecurrencia",
+                "operationId": "TipoRecurrenciaController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoRecurrencia content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRecurrencia"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRecurrencia"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_recurrencia"
+                ],
+                "description": "delete the TipoRecurrencia",
+                "operationId": "TipoRecurrenciaController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tr_evento/": {
+            "post": {
+                "tags": [
+                    "tr_evento"
+                ],
+                "description": "create the TrEvento",
+                "operationId": "TrEventoController.PostTrEvento",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrEvento content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrEvento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TrEvento"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tr_evento/{id}": {
+            "put": {
+                "tags": [
+                    "tr_evento"
+                ],
+                "description": "update the TrEvento",
+                "operationId": "TrEventoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrEvento content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrEventoPut"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrEventoPut"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tr_evento"
+                ],
+                "description": "delete the Evento",
+                "operationId": "TrEventoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tr_evento/{persona}": {
+            "get": {
+                "tags": [
+                    "tr_evento"
+                ],
+                "description": "get TrEventoController",
+                "operationId": "TrEventoController.Get All By Persona",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Persona",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrEventoController"
+                        }
                     },
                     "404": {
                         "description": "not found resource"
@@ -882,74 +1174,42 @@
         }
     },
     "definitions": {
-        "models.ParticipanteSesion": {
-            "title": "ParticipanteSesion",
-            "type": "object",
-            "properties": {
-                "Ente": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "RolParticipanteSesion": {
-                    "$ref": "#/definitions/models.RolParticipanteSesion"
-                },
-                "Sesion": {
-                    "$ref": "#/definitions/models.Sesion"
-                }
-            }
+        "151.\u003cnil\u003e.EncargadoEvento": {
+            "title": "EncargadoEvento",
+            "type": "object"
         },
-        "models.RelacionSesiones": {
-            "title": "RelacionSesiones",
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "SesionHijo": {
-                    "$ref": "#/definitions/models.Sesion"
-                },
-                "SesionPadre": {
-                    "$ref": "#/definitions/models.Sesion"
-                }
-            }
+        "191.\u003cnil\u003e.TipoPublico": {
+            "title": "TipoPublico",
+            "type": "object"
         },
-        "models.RolParticipanteSesion": {
-            "title": "RolParticipanteSesion",
+        "293.\u003cnil\u003e.EncargadoEvento": {
+            "title": "EncargadoEvento",
+            "type": "object"
+        },
+        "333.\u003cnil\u003e.TipoPublico": {
+            "title": "TipoPublico",
+            "type": "object"
+        },
+        "375.\u003cnil\u003e.EncargadoEvento": {
+            "title": "EncargadoEvento",
+            "type": "object"
+        },
+        "422.\u003cnil\u003e.TipoPublico": {
+            "title": "TipoPublico",
+            "type": "object"
+        },
+        "models.CalendarioEvento": {
+            "title": "CalendarioEvento",
             "type": "object",
             "properties": {
                 "Activo": {
                     "type": "boolean"
                 },
-                "CodigoAbreviacion": {
-                    "type": "string"
-                },
                 "Descripcion": {
                     "type": "string"
                 },
-                "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Nombre": {
-                    "type": "string"
-                },
-                "NumeroOrden": {
-                    "type": "number",
-                    "format": "double"
-                }
-            }
-        },
-        "models.Sesion": {
-            "title": "Sesion",
-            "type": "object",
-            "properties": {
-                "Descripcion": {
-                    "type": "string"
+                "EventoPadreId": {
+                    "$ref": "#/definitions/models.CalendarioEvento"
                 },
                 "FechaCreacion": {
                     "type": "string",
@@ -971,24 +1231,48 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "NumeroRecurrencias": {
+                "PeriodoId": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "Periodo": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Recurrente": {
-                    "type": "boolean"
-                },
-                "TipoSesion": {
-                    "$ref": "#/definitions/models.TipoSesion"
+                "TipoEventoId": {
+                    "$ref": "#/definitions/models.TipoEvento"
                 }
             }
         },
-        "models.TipoSesion": {
-            "title": "TipoSesion",
+        "models.EncargadoEvento": {
+            "title": "EncargadoEvento",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CalendarioEventoId": {
+                    "$ref": "#/definitions/models.CalendarioEvento"
+                },
+                "EncargadoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RolEncargadoEventoId": {
+                    "$ref": "#/definitions/models.RolEncargadoEvento"
+                }
+            }
+        },
+        "models.RolEncargadoEvento": {
+            "title": "RolEncargadoEvento",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -999,6 +1283,85 @@
                 },
                 "Descripcion": {
                     "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroDeOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.TipoEvento": {
+            "title": "TipoEvento",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "DependenciaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "TipoRecurrenciaId": {
+                    "$ref": "#/definitions/models.TipoRecurrencia"
+                }
+            }
+        },
+        "models.TipoPublico": {
+            "title": "TipoPublico",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CalendarioEventoId": {
+                    "$ref": "#/definitions/models.CalendarioEvento"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1012,28 +1375,106 @@
                     "format": "double"
                 }
             }
+        },
+        "models.TipoRecurrencia": {
+            "title": "TipoRecurrencia",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TrEvento": {
+            "title": "TrEvento",
+            "type": "object",
+            "properties": {
+                "CalendarioEvento": {
+                    "$ref": "#/definitions/models.CalendarioEvento"
+                },
+                "EncargadosEvento": {
+                    "$ref": "#/definitions/151.\u003cnil\u003e.EncargadoEvento"
+                },
+                "TiposPublico": {
+                    "$ref": "#/definitions/191.\u003cnil\u003e.TipoPublico"
+                }
+            }
+        },
+        "models.TrEventoController": {
+            "title": "TrEventoController",
+            "type": "object"
+        },
+        "models.TrEventoPut": {
+            "title": "TrEventoPut",
+            "type": "object",
+            "properties": {
+                "CalendarioEvento": {
+                    "$ref": "#/definitions/models.CalendarioEvento"
+                },
+                "EncargadosEvento": {
+                    "$ref": "#/definitions/293.\u003cnil\u003e.EncargadoEvento"
+                },
+                "EncargadosEventoBorrados": {
+                    "$ref": "#/definitions/375.\u003cnil\u003e.EncargadoEvento"
+                },
+                "TiposPublico": {
+                    "$ref": "#/definitions/333.\u003cnil\u003e.TipoPublico"
+                },
+                "TiposPublicoBorrados": {
+                    "$ref": "#/definitions/422.\u003cnil\u003e.TipoPublico"
+                }
+            }
         }
     },
     "tags": [
         {
-            "name": "tipo_sesion",
-            "description": "TipoSesionController operations for TipoSesion\n"
+            "name": "rol_encargado_evento",
+            "description": "RolEncargadoEventoController operations for RolEncargadoEvento\n"
         },
         {
-            "name": "rol_participante_sesion",
-            "description": "RolParticipanteSesionController operations for RolParticipanteSesion\n"
+            "name": "tipo_publico",
+            "description": "TipoPublicoController operations for TipoPublico\n"
         },
         {
-            "name": "participante_sesion",
-            "description": "ParticipanteSesionController operations for ParticipanteSesion\n"
+            "name": "tipo_recurrencia",
+            "description": "TipoRecurrenciaController operations for TipoRecurrencia\n"
         },
         {
-            "name": "sesion",
-            "description": "SesionController operations for Sesion\n"
+            "name": "tipo_evento",
+            "description": "TipoEventoController operations for TipoEvento\n"
         },
         {
-            "name": "relacion_sesiones",
-            "description": "RelacionSesionesController operations for RelacionSesiones\n"
+            "name": "tr_evento",
+            "description": "operations for TrEvento\n"
+        },
+        {
+            "name": "calendario_evento",
+            "description": "CalendarioEventoController operations for CalendarioEvento\n"
+        },
+        {
+            "name": "encargado_evento",
+            "description": "EncargadoEventoController operations for EncargadoEvento\n"
         }
     ]
 }
