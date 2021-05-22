@@ -22,6 +22,8 @@ jobs:
         port: ${{ secrets.PORT }}
         envs: BRANCH,REPO
         script: |
+          rm -rf /home/ec2-user/star_kill/services/$REPO
+          git clone https://github.com/$REPO
           cd /home/ec2-user/star_kill/services/$REPO
           git checkout $BRANCH
           git pull origin $BRANCH
