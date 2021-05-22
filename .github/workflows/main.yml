@@ -23,6 +23,7 @@ jobs:
         envs: BRANCH,REPO
         script: |
           cd /home/ec2-user/star_kill/services/$REPO
+          git checkout $BRANCH
           git pull origin $BRANCH
           docker-compose build
           docker-compose up -d
