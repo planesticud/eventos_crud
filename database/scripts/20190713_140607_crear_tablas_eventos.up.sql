@@ -241,8 +241,3 @@ ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 COMMENT ON CONSTRAINT fk_evento_padre ON evento.calendario_evento  IS 'FK de la evento padre';
 -- ddl-end --
-
--- Permisos de usuario
-GRANT USAGE ON SCHEMA evento TO test;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA evento TO test;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA evento TO test;
